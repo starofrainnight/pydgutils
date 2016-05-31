@@ -18,9 +18,9 @@ long_description=(
 
 our_requires = []
 
-# Only require 3to2 library on python2
+# Only require 3to2 package on python2
 if sys.version_info[0] <= 2:
-    our_packages.append("3to2")
+    our_requires.append("3to2")
 
 setup(
     name=package_name,
