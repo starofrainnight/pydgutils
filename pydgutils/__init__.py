@@ -13,8 +13,8 @@ import re
 import filecmp
 import fnmatch
 
-PROCESSED_DIR = "build/downgraded_src"
-SOURCE_DIR = "src"
+_PROCESSED_DIR = "build/downgraded_src"
+_SOURCE_DIR = "src"
 
 def __copy_tree(src_dir, dest_dir):
     """
@@ -63,8 +63,8 @@ def process(base_dir=os.curdir):
 
     @return Preprocessed source directory
     """
-    source_path = os.path.join(base_dir, SOURCE_DIR)
-    destination_path = os.path.join(base_dir, PROCESSED_DIR)
+    source_path = os.path.join(base_dir, _SOURCE_DIR)
+    destination_path = os.path.join(base_dir, _PROCESSED_DIR)
 
     if not os.path.exists(source_path):
         raise Dir
