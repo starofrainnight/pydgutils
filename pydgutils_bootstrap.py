@@ -1,7 +1,7 @@
 '''
 The MIT License (MIT)
 
-Copyright (c) 2007 ~ 2015, Hong-She Liang <starofrainnight@gmail.com>.
+Copyright (c) 2016, Hong-She Liang <starofrainnight@gmail.com>.
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -23,9 +23,9 @@ THE SOFTWARE.
 '''
 
 '''
-Bootstrap rabird setup environment
+Bootstrap pydgutils setup environment
 
-@date 2015-08-20
+@date 2016-05-31
 @author Hong-She Liang <starofrainnight@gmail.com>
 '''
 
