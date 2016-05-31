@@ -167,3 +167,9 @@ def use_pip():
         download(url)
         os.system("%s %s" % (sys.executable, filename))
 
+def use_pydgutils():
+    use_pip()
+
+    import pip
+
+    pip.main(["install", "pydgutils"])
