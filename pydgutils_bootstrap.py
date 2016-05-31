@@ -168,8 +168,10 @@ def use_pip():
         os.system("%s %s" % (sys.executable, filename))
 
 def use_pydgutils():
-    use_pip()
+    try:
+        import pydgutils
+    except:
+        use_pip()
+        import pip
+        pip.main(["install", "pydgutils"])
 
-    import pip
-
-    pip.main(["install", "pydgutils"])
