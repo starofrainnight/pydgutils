@@ -19,14 +19,21 @@ Copy the pydgutils_bootstrap.py (in pydgutils source package) to the same direct
 
     from pydgutils_bootstrap import use_pydgutils
     use_pydgutils()
-    
+
     import pydgutils
-        
+
     # Convert source to v2.x if we are using python 2.x.
     source_dir = pydgutils.process()
-    
+
     # Exclude the original source package, only accept the preprocessed package!
     packages = find_packages(where=source_dir)
+
+    setup(
+        ...
+        package_dir = {"": source_dir},
+        packages=packages,
+        ...
+        )
 
     ...
 
