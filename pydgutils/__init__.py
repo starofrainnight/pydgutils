@@ -175,7 +175,7 @@ def process_packages(base_dir=os.curdir):
     from setuptools import find_packages
 
     source_dir = process(base_dir)
-    packages = find_packages(where=base_dir)
+    packages = find_packages(where=source_dir)
     return (packages, source_dir)
 
 def process_requirements():
