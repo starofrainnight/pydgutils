@@ -167,3 +167,27 @@ def process(base_dir=os.curdir):
 
     return destination_path
 
+def process_packages(base_dir=os.curdir):
+    """
+    Search local packages and downgrade it if needs, then return founded
+    packages and source directory.
+    """
+    from setuptools import find_packages
+
+    source_dir = process(base_dir)
+    packages = find_packages(where=base_dir)
+    return (packages, source_dir)
+
+def process_requirements():
+    """
+    Simple function to get all requirements from ./requirements.txt, so we need
+    not wrote them twice!
+    """
+
+    from pip.req import parse_requirements
+
+    # parse_requirements() returns generator of pip.req.InstallRequirement objects
+    requirements = parse_requirements("./requirements.txt", session=False)
+    requirements = [str(ir.req) for ir in requirements]
+
+    return requirements
