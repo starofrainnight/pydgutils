@@ -50,7 +50,21 @@ def downgrade_files(files):
         from lib3to2.main import main as lib3to2_main
 
     if len(files) > 0:
-        lib3to2_main("lib3to2.fixes", ["-w", "-n", "--no-diffs"] + files)
+        options = [
+            "-f", "all",
+            # FIXME: It will trigger AssertionError: Sanity check failed: 0xFFFFFFFF
+            # "-f", "int",
+            "-f", "collections",
+            "-f", "memoryview",
+            "-f", "printfunction",
+            "-f", "unittest",
+            "-w",
+            "-n",
+            "--no-diffs",
+            ]
+        options += files
+
+        lib3to2_main("lib3to2.fixes", options)
 
 def process(base_dir=os.curdir):
     """
