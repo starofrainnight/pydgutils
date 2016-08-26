@@ -105,7 +105,7 @@ def process(base_dir=os.curdir):
     # Remove old preprocessed sources.
     if not os.path.exists(destination_path):
         __copy_tree(source_path, destination_path)
-        lib3to2_main("lib3to2.fixes", [destination_path])
+        lib3to2_main("lib3to2.fixes", ["-w", "-n", "--no-diffs"] + [destination_path])
     else:
         # Remove all files that only in right side
         # Copy all files that only in left side to right side, then
