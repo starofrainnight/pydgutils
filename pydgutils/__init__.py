@@ -38,6 +38,20 @@ def __copy_tree(src_dir, dest_dir):
         else:
             shutil.copy2(from_path, to_path)
 
+def downgrade_files(files):
+    # Check and prepare 3to2 module.
+    try:
+        from lib3to2.main import main as lib3to2_main
+    except ImportError:
+        import pip
+
+        pip.main(['install', '3to2'])
+
+        from lib3to2.main import main as lib3to2_main
+
+    if len(files) > 0:
+        lib3to2_main("lib3to2.fixes", ["-w", "-n", "--no-diffs"] + files)
+
 def process(base_dir=os.curdir):
     """
     A special method for convert all source files to compatible with current
@@ -92,20 +106,10 @@ def process(base_dir=os.curdir):
         # large or equal than 3, we need not change the sources.
         return source_path
 
-    # Check and prepare 3to2 module.
-    try:
-        from lib3to2.main import main as lib3to2_main
-    except ImportError:
-        import pip
-
-        pip.main(['install', '3to2'])
-
-        from lib3to2.main import main as lib3to2_main
-
     # Remove old preprocessed sources.
     if not os.path.exists(destination_path):
         __copy_tree(source_path, destination_path)
-        lib3to2_main("lib3to2.fixes", ["-w", "-n", "--no-diffs"] + [destination_path])
+        downgrade_files([destination_path])
     else:
         # Remove all files that only in right side
         # Copy all files that only in left side to right side, then
@@ -163,7 +167,7 @@ def process(base_dir=os.curdir):
                 files.append(right_file_path)
 
         if len(files) > 0:
-            lib3to2_main("lib3to2.fixes", ["-w", "-n", "--no-diffs"] + files)
+            downgrade_files(files)
 
     return destination_path
 
