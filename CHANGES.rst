@@ -1,6 +1,10 @@
 Changes
 =======
 
+0.0.8 (2016-09-11)
+
+* Ensure only modified files be parsed while process the second time
+
 0.0.7 (2016-08-26)
 
 * Enabled fixers : collections, memoryview, printfunction, unittest
