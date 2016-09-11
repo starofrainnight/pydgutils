@@ -1,12 +1,19 @@
 language: python
 python:
-  - "2.7"
-  - "3.4"
-  - "3.5"
-  - "pypy"
-# command to install dependencies
+- '2.7'
+- '3.4'
+- '3.5'
+- pypy
 install:
-  - pip install .
-# command to run tests
+- pip install .
 script:
-  - python -c "exit(0)"
+- python -c "exit(0)"
+deploy:
+  provider: pypi
+  user: starofrainnight
+  password:
+    secure: WKibfFwyEVhAzCrHL6Gz2lIMW2jSYSwAn3E1q3RxDkWoAV+q9sJoTmBb+MkyOElgdcOs3JFyUkoopbmsnfsT/43Fb28IYsaiuwK42yTot5KFs+CbEwbBvNGaUW1OKYGPo5RL1Pfyw2GGTOnxu3OqWLtPdxrIatyJavUykM4nqRmHk50ScwnEZVzgf3HS+wyeIKh96SQ+cTSQ0PuFoXo8M8ltqLHIkuWqlNV5LUYTHeEpkoJopZeMiGQu+LSbbcMHKqmg5t00emQbNLmK5+vDZ5YynPSSe+f48ze2ADpvwxEWpw+8mCKNbUQk283HljypcapAqOkpftEm7FItFCzIw5qk5eWBd86WBpjOGzVVFyNH6RGbdUJPZsilz0mqtNI/iPJSWi/4YjOam8qBSAQAdrJha+tcJ80Dbj6/V/Pl3pz70X9cDR8ZnkkR8ZWzVQlbNXdzWGdIgWrWonTPKmMydlypLPIldmRp4RjzP+zC1MT0CBJ2CQS3rc4L0NjmlPx/m2jtSLbLQ7t6vGTw6VGtA/FxoxbFY7jeOJxMDrO+oXrd5tlg/bReB39LnixB//BguWwaRVMRMNay5DGpBZmhMInarn1+vv+iutFlBV+Gos7EHt/PNk6H4WOBoJoveMhPVa65OarLyvdC1GfL3sEQNZ6T0yhRA7GMtIP/5wI+A+s=
+  on:
+    tags: true
+    distributions: sdist
+    repo: starofrainnight/pydgutils
