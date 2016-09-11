@@ -17,3 +17,4 @@ deploy:
     tags: true
     distributions: sdist
     repo: starofrainnight/pydgutils
+    condition: $TRAVIS_PYTHON_VERSION = '3.5'
