@@ -27,5 +27,5 @@ def read_version_file(base_dir, package_name):
 
 # Version info structure just like python3's sys.version_info
 VersionInfo = namedtuple("VersionInfo", "major minor micro releaselevel serial")
-version_info = VersionInfo(0, 0, 10, RL_FINAL, 0)
+version_info = VersionInfo(0, 0, 11, RL_FINAL, 0)
 __version__ = version_info_to_str(version_info)
