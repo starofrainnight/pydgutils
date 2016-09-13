@@ -29,9 +29,11 @@ if sys.version_info[0] <= 2:
 shutil.rmtree(os.path.join(os.curdir, 'build'), ignore_errors=True)
 shutil.rmtree(os.path.join(os.curdir, 'dist'), ignore_errors=True)
 
+exec(open(os.path.join(package_name, "version.py")).read())
+
 setup(
     name=package_name,
-    version="0.0.10",
+    version=__version__,
     author="Hong-She Liang",
     author_email="starofrainnight@gmail.com",
     url="https://github.com/starofrainnight/%s" % package_name,
