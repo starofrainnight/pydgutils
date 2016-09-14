@@ -48,10 +48,12 @@ def remove_temporary_directories(base_dir):
         return
 
     files = os.listdir(root_dir)
+    is_leave_dir_existed = os.path.exists(leave_dir)
     for afile in files:
         afile_path = os.path.realpath(os.path.normpath(os.path.join(root_dir, afile)))
         if os.path.isdir(afile_path):
-            if not os.path.samefile(afile_path, leave_dir):
+            if ((not is_leave_dir_existed)
+                or (not os.path.samefile(afile_path, leave_dir))):
                 shutil.rmtree(afile_path, ignore_errors=True)
         else:
             os.remove(afile_path)
