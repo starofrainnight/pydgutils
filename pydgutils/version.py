@@ -20,7 +20,8 @@ def version_info_to_str(version_info):
 def read_version_file(base_dir, package_name):
     import os.path
 
-    package_name = package_name.replace("-", "_").replace(".", "/")
+    # PEP 8: underscores is discouraged. So we won't replace "-" to "_".
+    package_name = package_name.replace("-", "").replace(".", "/")
     version_file_path = os.path.join(base_dir, package_name, "version.py")
     with open(version_file_path) as f:
         return f.read()
