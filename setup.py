@@ -29,7 +29,7 @@ shutil.rmtree(os.path.join(os.curdir, 'build'), ignore_errors=True)
 
 setup(
     name=package_name,
-    version='0.0.13',
+    version='0.0.14',
     author="Hong-She Liang",
     author_email="starofrainnight@gmail.com",
     url="https://github.com/starofrainnight/%s" % package_name,

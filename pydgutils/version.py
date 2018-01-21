@@ -37,4 +37,4 @@ def read_property_from_file(property, path):
 def read_property_from_module(property, dir):
     return read_property_from_file(property, os.path.join(dir, "__init__.py"))
 
-__version__ = '0.0.13'
+__version__ = '0.0.14'
