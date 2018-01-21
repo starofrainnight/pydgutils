@@ -18,7 +18,7 @@ long_description=(
      open("CHANGES.rst", "r").read()
      )
 
-our_requires = []
+install_requires = []
 
 # Only require 3to2 package on python2
 if sys.version_info[0] <= 2:
@@ -49,6 +49,6 @@ setup(
         "Programming Language :: Python :: Implementation :: CPython",
         "Topic :: Software Development :: Libraries",
     ],
-    install_requires=our_requires,
+    install_requires=install_requires,
     packages=our_packages,
     )
