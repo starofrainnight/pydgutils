@@ -18,6 +18,18 @@ _PROCESSED_DIR = "build/downgraded_src"
 _SOURCE_DIR = "src"
 
 
+def _samefile(file1, file2):
+    if sys.platform == 'win32':
+        # it is a way more complicated, the following does not deal
+        # with hard links on Windows
+        # for better discussion see
+        # http://stackoverflow.com/q/8892831/164233
+        return os.path.normcase(os.path.normpath(file1)) == \
+            os.path.normcase(os.path.normpath(file2))
+    else:
+        return os.path.samefile(file1, file2)
+
+
 def __copy_tree(src_dir, dest_dir):
     """
     The shutil.copytree() or distutils.dir_util.copy_tree() will happen to report
@@ -57,7 +69,7 @@ def remove_temporary_directories(base_dir):
             os.path.normpath(os.path.join(root_dir, afile)))
         if os.path.isdir(afile_path):
             if ((not is_leave_dir_existed)
-                    or (not os.path.samefile(afile_path, leave_dir))):
+                    or (not _samefile(afile_path, leave_dir))):
                 shutil.rmtree(afile_path, ignore_errors=True)
         else:
             os.remove(afile_path)
