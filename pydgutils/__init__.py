@@ -142,7 +142,7 @@ def process(base_dir=os.curdir):
     destination_path = os.path.join(base_dir, _PROCESSED_DIR)
 
     if not os.path.exists(source_path):
-        raise Dir
+        raise NotADirectoryError("Path not found : '%s'!" % source_path)
 
     remove_temporary_directories(base_dir)
 
