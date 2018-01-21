@@ -54,8 +54,8 @@ def __copy_tree(src_dir, dest_dir):
 
 
 def remove_temporary_directories(base_dir):
-    # The 'build' and 'dist' folder sometimes will not update! So we need to
-    # remove them all !
+    # The 'build' folder sometimes will not update! So we need to remove them
+    # all !
     leave_dir = os.path.realpath(os.path.normpath(
         os.path.join(base_dir, _PROCESSED_DIR)))
     root_dir = os.path.join(base_dir, "build")
@@ -73,8 +73,6 @@ def remove_temporary_directories(base_dir):
                 shutil.rmtree(afile_path, ignore_errors=True)
         else:
             os.remove(afile_path)
-
-    shutil.rmtree(os.path.join(base_dir, 'dist'), ignore_errors=True)
 
 
 def downgrade_files(files):

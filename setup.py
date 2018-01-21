@@ -12,11 +12,11 @@ package_name = "pydgutils"
 
 our_packages = find_packages()
 
-long_description=(
-     open("README.rst", "r").read()
-     + "\n" +
-     open("CHANGES.rst", "r").read()
-     )
+long_description = (
+    open("README.rst", "r").read()
+    + "\n" +
+    open("CHANGES.rst", "r").read()
+)
 
 install_requires = []
 
@@ -24,10 +24,8 @@ install_requires = []
 if sys.version_info[0] <= 2:
     install_requires.append("3to2")
 
-# The 'build' and 'dist' folder sometimes will not update! So we need to
-# remove them all !
+# The 'build' folder sometimes will not update! So we need to remove them all !
 shutil.rmtree(os.path.join(os.curdir, 'build'), ignore_errors=True)
-shutil.rmtree(os.path.join(os.curdir, 'dist'), ignore_errors=True)
 
 setup(
     name=package_name,
@@ -49,4 +47,4 @@ setup(
     ],
     install_requires=install_requires,
     packages=our_packages,
-    )
+)
