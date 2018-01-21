@@ -22,7 +22,7 @@ install_requires = []
 
 # Only require 3to2 package on python2
 if sys.version_info[0] <= 2:
-    our_requires.append("3to2")
+    install_requires.append("3to2")
 
 # The 'build' and 'dist' folder sometimes will not update! So we need to
 # remove them all !
