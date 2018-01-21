@@ -1,4 +1,6 @@
 from collections import namedtuple
+import re
+import os.path
 
 # Release levels
 RL_ALPHA = 'alpha'
@@ -25,6 +27,15 @@ def read_version_file(base_dir, package_name):
     version_file_path = os.path.join(base_dir, package_name, "version.py")
     with open(version_file_path) as f:
         return f.read()
+
+def read_property_from_file(property, path):
+    result = re.search(
+        r'%s\s*=\s*[\'"]([^\'"]*)[\'"]' % property,
+        open(path).read())
+    return result.group(1)
+
+def read_property_from_module(property, dir):
+    return read_property_from_file(property, os.path.join(dir, "__init__.py"))
 
 # Version info structure just like python3's sys.version_info
 VersionInfo = namedtuple("VersionInfo", "major minor micro releaselevel serial")
