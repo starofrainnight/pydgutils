@@ -12,7 +12,7 @@ import fnmatch
 import re
 import filecmp
 import fnmatch
-from .version import __version__, version_info
+from .version import __version__
 
 _PROCESSED_DIR = "build/downgraded_src"
 _SOURCE_DIR = "src"

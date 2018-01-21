@@ -37,7 +37,4 @@ def read_property_from_file(property, path):
 def read_property_from_module(property, dir):
     return read_property_from_file(property, os.path.join(dir, "__init__.py"))
 
-# Version info structure just like python3's sys.version_info
-VersionInfo = namedtuple("VersionInfo", "major minor micro releaselevel serial")
-version_info = VersionInfo(0, 0, 12, RL_FINAL, 0)
-__version__ = version_info_to_str(version_info)
+__version__ = '0.0.12'
