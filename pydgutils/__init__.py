@@ -80,9 +80,12 @@ def downgrade_files(files):
     try:
         from lib3to2.main import main as lib3to2_main
     except ImportError:
-        import pip
+        try:
+            from pip import main as pipmain
+        except:
+            from pip._internal import main as pipmain
 
-        pip.main(['install', '3to2'])
+        pipmain(['install', '3to2'])
 
         from lib3to2.main import main as lib3to2_main
 
