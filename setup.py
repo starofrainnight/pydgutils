@@ -13,10 +13,7 @@ package_name = "pydgutils"
 our_packages = find_packages()
 
 long_description = (
-    open("README.rst", "r").read()
-    + "\n" +
-    open("CHANGES.rst", "r").read()
-)
+    open("README.rst", "r").read() + "\n" + open("CHANGES.rst", "r").read())
 
 install_requires = []
 
@@ -33,7 +30,8 @@ setup(
     author="Hong-She Liang",
     author_email="starofrainnight@gmail.com",
     url="https://github.com/starofrainnight/%s" % package_name,
-    description="A library use for downgrade sources to python2 syntax during setup",
+    description=
+    "A library use for downgrade sources to python2 syntax during setup",
     long_description=long_description,
     classifiers=[
         "Development Status :: 3 - Alpha",

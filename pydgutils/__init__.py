@@ -56,8 +56,8 @@ def __copy_tree(src_dir, dest_dir):
 def remove_temporary_directories(base_dir):
     # The 'build' folder sometimes will not update! So we need to remove them
     # all !
-    leave_dir = os.path.realpath(os.path.normpath(
-        os.path.join(base_dir, _PROCESSED_DIR)))
+    leave_dir = os.path.realpath(
+        os.path.normpath(os.path.join(base_dir, _PROCESSED_DIR)))
     root_dir = os.path.join(base_dir, "build")
     if not os.path.exists(root_dir):
         return
@@ -88,13 +88,18 @@ def downgrade_files(files):
 
     if len(files) > 0:
         options = [
-            "-f", "all",
+            "-f",
+            "all",
             # FIXME: It will trigger AssertionError: Sanity check failed: 0xFFFFFFFF
             # "-f", "int",
-            "-f", "collections",
-            "-f", "memoryview",
-            "-f", "printfunction",
-            "-f", "unittest",
+            "-f",
+            "collections",
+            "-f",
+            "memoryview",
+            "-f",
+            "printfunction",
+            "-f",
+            "unittest",
             "-w",
             "-n",
             "--no-diffs",
@@ -210,7 +215,8 @@ def process(base_dir=os.curdir):
 
                 if os.path.isdir(left_file_path):
                     __copy_tree(left_file_path, right_file_path)
-                    if not is_path_in_filters(os.path.basename(right_file_path), dir_filters):
+                    if not is_path_in_filters(
+                            os.path.basename(right_file_path), dir_filters):
                         files.append(right_file_path)
                     continue
 
