@@ -265,7 +265,10 @@ def process_requirements():
     not wrote them twice!
     """
 
-    from pip.req import parse_requirements
+    try:
+        from pip.req import parse_requirements
+    except:
+        from pip._internal.req import parse_requirements
 
     # parse_requirements() returns generator of pip.req.InstallRequirement
     # objects
