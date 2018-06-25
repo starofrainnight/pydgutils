@@ -187,9 +187,5 @@ def use_pydgutils():
         import pydgutils
     except:
         use_pip()
-        try:
-            from pip import main as pipmain
-        except:
-            from pip._internal import main as pipmain
 
-        pipmain(["install", "pydgutils"])
+        os.system("%s -m pip install pydgutils" % sys.executable)
